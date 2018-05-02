@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/set.css"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	
+//    	var userName = document.getElementById("uname");
+//		var userId = document.getElementById("uid");
+//		var userImage = document.getElementById("uimg");
+		
+//		alert("df");
+		
+		window.onload = function(){
+		
+		document.getElementById("uinfo").addEventListener("tap", function() {
+//						alert("asdf");
+//						window.open = "userInfo.html";
+//						window.href = "userInfo.html";
+						mui.openWindow({
+							url: "userInfo.html",
+							id: "userInfo",
+							waiting: {
+								autoShow: false
+							}
+    					})
+					});
+					document.getElementById("hy").addEventListener("tap", function() {
+						mui.openWindow({
+							url: "history.html",
+							id: "history",
+							waiting: {
+								autoShow: false
+							}
+    					})
+					});
+				document.getElementById("gd").addEventListener("tap", function() {
+						mui.openWindow({
+							url: "grade.html",
+							id: "grade",
+							waiting: {
+								autoShow: false
+							}
+    					})
+					});
+				document.getElementById("us").addEventListener("tap", function() {
+						mui.openWindow({
+							url: "aboutus.html",
+							id: "aboutus",
+							waiting: {
+								autoShow: false
+							}
+    					})
+					});
+			
+			
+		}
+		
+		
+//			mui.plusReady(function() {
+//				alert("士大夫");
+				
+				
+				
+//			});
+			
+      	
+    </script>
+    
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">个人中心</h1>
+	</header>
+	<div class="mui-content">
+	    <div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="fonts/img/1.jpg">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/1.jpg">
+						</a>
+					</div>
+					<!-- 第二张 -->http://127.0.0.1:8020/user/index.html#
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/2.jpg">
+						</a>
+					</div>
+					<!-- 第三张 -->http://127.0.0.1:8020/user/index.html#
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/3.jpg">
+						</a>
+					</div>
+
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="img/1.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			
+			<ul class="mui-table-view">
+			        <ul class="mui-table-view">
+				<!--用户信息-->
+				<li class="mui-table-view-cell mui-media" id="uinfo">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-right" id="uimg" src="../../image/shop03.jpg">
+						<div class="mui-media-body">
+							<span id="uname">张三</span>
+							<p class="mui-ellipsis" id="uid">12345</p>
+						</div>
+					</a>
+				</li>
+				<!--其它选项-->
+				<li class="mui-table-view-cell" id="hy">
+					<a class="mui-navigate-right" href="javascript:;">员购查询</a>
+				</li>
+				<li class="mui-table-view-cell" id="gd">
+					<a class="mui-navigate-right" href="javascript:;">菜式评分</a>
+				</li>
+				<li class="mui-table-view-cell" id="us">
+					<a class="mui-navigate-right" href="javascript:;">关于我们</a>
+				</li>
+			</ul>
+		</div>
+			
+	</div>
+	<!--<script type="text/javascript" charset="utf-8">
+			mui.init();
+			var userName = document.getElementById("uname");
+			var userId = document.getElementById("uid");
+			var userImage = document.getElementById("uimg");
+		
+			mui.plusReady(function() {
+				document.getElementById("uinfo").addEventListener("tap", function() {
+						mui.openWindow({
+							url: "userInfo.html",
+							id: "userInfo",
+							waiting: {
+								autoShow: false
+							}
+    					})
+					})
+			});
+			function();
+				
+		</script>-->
+		
+</body>
+</html>

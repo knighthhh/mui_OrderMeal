@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/mui.min.js"></script>
+    	<link href="css/mui.min.css" rel="stylesheet"/>
+    	<link href="css/my.css" rel="stylesheet"/> 
+		<title></title>
+		
+		<script type="text/javascript" charset="utf-8">
+   		mui.init();
+			
+		</script>
+
+	</head>
+	
+	
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title" style="color: #007AFF;">日常订餐</h1>
+		</header>
+		
+		<div class="mui-content" style="height: 130px;background-color: white;">
+			<div id="" style="text-align: center;margin-top: 10px;color: burlywood;font-size: 20px;">
+				预定<span id="show_meal_type">午餐</span>列表
+			</div>
+			<div id="" style="text-align: center;margin-top: 10px;" >
+				预定时间:&nbsp;&nbsp;<span id="startdate" style="color: burlywood;">2016-08-16</span>
+					   &nbsp;到&nbsp; <span id="enddate" style="color: burlywood;"> 2016-08-20</span>
+			</div>
+		</div>
+		
+		<!--订餐列表-->
+		<div class="mui-content" style="padding-top:0px ;">
+				<!--订餐列表form-->
+				<form class="mui-input-group"id="orderlist_form">
+				</form>
+		</div>
+		
+		<!--这个div是为了避免订餐列表被底栏遮住-->
+		<div style="height: 120px;">
+		</div>
+		
+		<!--底部按钮-->
+		<div class="mui-bar mui-bar-tab">
+			<div id="list_bottom" style="height:100%;width:50%;margin-left:25%;float: left;">
+				<button id="submit_order" type="button" class="mui-btn mui-btn-primary" >
+					提交
+				</button>
+				<button type="button" class="mui-btn mui-btn-primary mui-action-back">
+					返回
+				</button>
+			</div>
+			<div style="height:100%;margin-right:10px;float: right;">
+				<button id="selectall" type="button" class="mui-btn mui-btn-red ">
+					全选
+				</button>
+			</div>
+		</div>
+		
+		
+		<script language="JavaScript">
+			//对URL处理
+			var thisURL = decodeURI(location.href);    
+			var getval_all =thisURL.split('?')[1]; 
+			var temp_arr=new Array;
+		 	var getval_detail_arr= getval_all.split("&");
+		 	for(i=0;i<getval_detail_arr.length;i++){
+		 		temp_arr[i]=getval_detail_arr[i].split("=")[1];
+		 	}
+		 	
+		 	//获得的值去改变当前页面
+			document.getElementById("show_meal_type").innerHTML=temp_arr[0];
+			document.getElementById("startdate").innerHTML=temp_arr[1];
+			document.getElementById("enddate").innerHTML=temp_arr[2];
+			
+			//查询确认了订餐天数的函数
+			function queryOrderday(){
+				var num_day=0;
+				var divaa=document.getElementById("orderlist_form");
+				var CheckBox=divaa.getElementsByTagName('input');
+				for(var i=0;i<CheckBox.length;i++){
+					if(CheckBox[i].checked==true){
+						num_day=num_day+1;
+					}
+    	        }
+				return num_day;
+			}
+			
+			//对获得需要订餐的星期几的处理
+			var week_detail=temp_arr[3].split("");
+			var weekDay = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+			
+			//星期几与星期几进行比较的函数
+			function weekCompare(weekvalue){
+				for(var i=0;i<week_detail.length;i++){
+					if(weekvalue==weekDay[week_detail[i]]){
+						return true;
+					}
+				}
+				return false;
+			}
+				
+			//计算日期差的函数
+			function dateCount(){
+				var srdate=temp_arr[1];
+				var erdate=temp_arr[2];
+				var regEx = new RegExp("\\-","gi");
+				srdate=srdate.replace(regEx,"/");
+				erdate=erdate.replace(regEx,"/");
+				var date1 = new Date(srdate);
+				var date2 = new Date(erdate);
+				 
+				var s1 = date1.getTime();
+				var s2 = date2.getTime();
+				var total = (s2 - s1)/1000;
+				var day = parseInt(total / (24*60*60));
+				
+				return day+1;
+			}
+			
+			//date类型转yy-mm-dd类型
+			function dateToymd(datevalue){
+				var year = datevalue.getFullYear();
+  			   	var month = datevalue.getMonth()+1;    //js从0开始取 
+   				var dated = datevalue.getDate(); 
+   				if(month<10){
+					month='0' + month;
+				}
+				if(dated<10){
+					dated='0' + dated;
+				}
+					
+   				return (year+"-"+month+"-"+dated);
+			}
+			
+			//判断某日期是星期几
+			function dateWeek(dateStr){
+				var myDate = new Date(Date.parse(dateStr.replace(/-/g, "/"))); 
+				return weekDay[myDate.getDay()];
+			}
+			
+			//订餐列表显示的处理
+			function dateList(){
+				var datearr=temp_arr[1];
+				for(var i=0;i<dateCount();++i){
+					var return_week=dateWeek(datearr);
+					if(weekCompare(return_week)){
+						//这里的if判断还要去数据库查询
+						if(1){
+							var s="<div class='mui-input-row mui-checkbox'>"+
+									"<label>"+
+								   		"<span style='margin-right: 10%;'>"+datearr+"</span>"+
+								   		"<span >"+return_week+"</span>"+
+								   		"<span class='mui-pull-right'>确认订餐</span>"+
+									"</label>"+
+									"<input name='checkbox1' value='Item 3'' type='checkbox' checked>"+
+								  "</div>";
+							document.getElementById("orderlist_form").innerHTML += s;
+						
+						}
+						//这里要去数据库查询已经订餐了的样式
+//						else
+//						{
+//							<div class='mui-input-row mui-checkbox mui-disabled'>
+//								<label>
+//									<span style='margin-right: 10%;'>2016-08-18</span>
+//									<span>星期三</span>
+//									<span class='mui-pull-right' style='color: red;'>已定餐</span>
+//								</label>
+//								<input name='checkbox1'  disabled='disabled'>
+//							</div>
+//						}
+					}else{
+						
+					}
+					var temp=new Date(datearr.replace(/-/g, "/"));
+					datearr= new Date(temp.getTime() + 24*60*60*1000);
+					datearr=dateToymd(datearr);
+				}
+			}
+			dateList();
+			
+			//提交按钮的JS代码
+			document.getElementById("submit_order").addEventListener('tap', function() {
+				var mealtype=document.getElementById("show_meal_type").innerHTML
+				var btnArray = ['确认','返回'];
+				var btnArray2 = ['确认'];
+				
+				if(queryOrderday()==0){
+					mui.confirm("您没有选择任何定餐，请重新选择", '旭日饭堂', btnArray2, function(e) {
+						
+					});
+				}
+				else{
+					mui.confirm("是否确认以上订餐", '旭日饭堂', btnArray, function(e) {
+						if (e.index == 0) {
+							if(temp_arr[0]=='早餐'){
+								var orderday=queryOrderday();
+								mui.openWindow({
+				   					url: 'order_pay_zc.html?mealtype='+mealtype+'&startdate='+temp_arr[1]+'&enddate='+temp_arr[2]+'&orderday='+orderday, 
+				    				id:'order_pay_zc'
+				    		});
+							}else if(temp_arr[0]=='午餐'){
+								mui.openWindow({
+					   				url: 'order_nopay_wuc.html?mealtype='+mealtype, 
+					    			id:'order_nopay_wuc'
+					    		});
+							}else if(temp_arr[0]=='晚餐'){
+								var orderday=queryOrderday();
+								mui.openWindow({
+					   				url: 'order_pay_wanc.html?mealtype='+mealtype+'&startdate='+temp_arr[1]+'&enddate='+temp_arr[2]+'&orderday='+orderday, 
+					    			id:'order_pay_wanc'
+					    		});
+							}
+							
+						} 
+						else {
+						}
+					})
+				}
+			});
+			
+			//全选按钮的JS代码
+			document.getElementById("selectall").addEventListener('tap', function() {
+					var divaa=document.getElementById("orderlist_form");
+					var CheckBox=divaa.getElementsByTagName('input');
+					for(var i=0;i<CheckBox.length;i++){
+                  	   CheckBox[i].checked=true;
+        	        };
+				});
+		</script>
+		
+		
+	</body>
+</html>

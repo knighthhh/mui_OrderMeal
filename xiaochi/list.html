@@ -1,0 +1,516 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<!--<link rel="stylesheet" type="text/css" href="css/xr.css" />-->
+		<link rel="stylesheet" type="text/css" href="css/my.css" />
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery-1.10.2.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			//    	mui.init({
+			//  subpages:[{
+			//    url:'list2.html',
+			//    id:'list2.html',
+			//    styles:{
+			//      top:'55px',//mui标题栏默认高度为45px；
+			//      bottom:'0px'//默认为0px，可不定义；
+			//    }
+			//  }]
+			//});
+			mui.init()
+		</script>
+<style type="text/css">
+     body{
+     	line-height: 18px;
+     }
+	.mui-media-body button{
+		float: right;
+	}
+	.mui-btn,button{
+		font-size: 12px;
+		padding: 7px 9px;
+	}
+	#item2 span{
+		font-size: 14px;
+		color: #8f8f94;
+	}
+	.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell {
+    padding-left: 20px;
+    }
+    .mui-checkbox.mui-left label, .mui-radio.mui-left label{
+    	padding-right: 0px;
+    	padding-left: 52px;
+    }
+</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="fonts/img/1.jpg">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="fonts/img/1.jpg">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="fonts/img/1.jpg">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="img/3.jpg">
+						</a>
+					</div>
+
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="img/1.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+
+			<div class="mui-segmented-control">
+				<a class="mui-control-item mui-active" href="#item1">食品</a>
+				<a class="mui-control-item" href="#item2">我的订单</a>
+			</div>
+
+			<div id="item1" class="mui-control-content mui-active">
+				<div class="order_meal">
+					<div class="meal  mui-col-xs-3">
+						<ul>
+							<div id="segmentedControl" class="mui-segmented-control">
+								<li class="mui-control-item " id="li_zc" style="display: table;width: 100%;">点心</li>
+								<li class="mui-control-item" id="li_wuc" style="display: table;width: 100%;">应节食品</li>
+								<li class="mui-control-item" id="li_wanc" style="display: table;width: 100%;">特色食品</li>
+							</div>
+						</ul>
+					</div>
+					<script type="text/javascript" charset="utf-8">
+						document.getElementById("li_zc").addEventListener("tap", function() {
+							zc.style.display = 'block';
+							wuc.style.display = 'none';
+							wanc.style.display = 'none';
+						});
+						document.getElementById("li_wuc").addEventListener("tap", function() {
+							zc.style.display = 'none';
+							wuc.style.display = 'block';
+							wanc.style.display = 'none';
+						});
+						document.getElementById("li_wanc").addEventListener("tap", function() {
+							zc.style.display = 'none';
+							wuc.style.display = 'none';
+							wanc.style.display = 'block';
+						});
+					</script>
+
+					<div class="order_meal_list mui-col-xs-9">
+						<div class="zc" id="zc">
+							<ul class="mui-table-view" id="goodsList">
+								<li class="mui-table-view-cell mui-media">
+									
+								<div class="mui-input-row mui-radio mui-left">
+								    <label>人民币</label>
+								    <input name="radio1" type="radio" checked></input>
+								</div>
+								<div class="mui-input-row mui-radio mui-left">
+								    <label>港币</label>
+								    <input name="radio1" type="radio">
+								</div>
+								</li>
+								
+								<li class="mui-table-view-cell mui-media" data-detail="productDetail">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="fonts/img/head.jpg">
+										<div class="mui-media-body">
+											<span>面包</span>
+											<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="20" data-value="0">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+											<p class="mui-ellipsis" id="data-price">人民币：20</p>
+											<p class="mui-ellipsis" id="data-price">港币：30</p>
+										</div>
+									</a>
+								</li>
+							
+								<li class="mui-table-view-cell mui-media" data-detail="productDetail">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="fonts/img/head.jpg">
+										<div class="mui-media-body">
+											<span>粥</span>
+											<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="20" data-value="0">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+											<p class="mui-ellipsis" id="data-price">人民币：20</p>
+											<p class="mui-ellipsis" id="data-price">港币：30</p>										</div>
+									</a>
+								</li>
+							
+								<li class="mui-table-view-cell mui-media" data-detail="productDetail">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="fonts/img/head.jpg">
+										<div class="mui-media-body">
+											<span>油条</span>
+											<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="20" data-value="0">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+																						<p class="mui-ellipsis" id="data-price">人民币：20</p>
+											<p class="mui-ellipsis" id="data-price">港币：30</p>	
+										</div>
+									</a>
+								</li>
+							
+								<li class="mui-table-view-cell mui-media" data-detail="productDetail">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="fonts/img/head.jpg">
+										<div class="mui-media-body">
+											<span>面包</span>
+											<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="20" data-value="0">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+											<p class="mui-ellipsis" id="data-price">人民币：20</p>
+											<p class="mui-ellipsis" id="data-price">港币：30</p>												</div>
+									</a>
+								</li>
+							
+								<li class="mui-table-view-cell mui-media" data-detail="productDetail">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="fonts/img/head.jpg">
+										<div class="mui-media-body">
+											<span>面包</span>
+											<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="20" data-value="0">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+											<p class="mui-ellipsis" id="data-price">人民币：20</p>
+											<p class="mui-ellipsis" id="data-price">港币：30</p>												</div>
+									</a>
+								</li>
+							
+								<li class="mui-table-view-cell mui-media" data-detail="productDetail">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="fonts/img/head.jpg">
+										<div class="mui-media-body">
+											<span>面包</span>
+											<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="20" data-value="0">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+											<p class="mui-ellipsis" id="data-price">人民币：20</p>
+											<p class="mui-ellipsis" id="data-price">港币：30</p>												</div>
+									</a>
+								</li>
+							
+								<li class="mui-table-view-cell mui-media" data-detail="productDetail">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="fonts/img/head.jpg">
+										<div class="mui-media-body">
+											<span>面包</span>
+											<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="20" data-value="0">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+																						<p class="mui-ellipsis" id="data-price">人民币：20</p>
+											<p class="mui-ellipsis" id="data-price">港币：30</p>	
+										</div>
+									</a>
+								</li>
+							</ul>
+							
+
+							
+
+						</div>
+
+						<div class="wuc" id="wuc">
+							<ul class="mui-table-view" id="goodsList">
+								<li class="mui-table-view-cell mui-media">
+						
+								<div class="mui-input-row mui-radio mui-left ">
+								    <label>人民币</label>
+								    <input name="radio2" type="radio" checked></input>
+								</div>
+								<div class="mui-input-row mui-radio mui-left">
+								    <label>港币</label>
+								    <input name="radio2" type="radio">
+								</div>
+								</li>
+								<li class="mui-table-view-cell mui-media" data-detail="productDetail">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="fonts/img/head.jpg">
+										<div class="mui-media-body">
+											<span>油条</span>
+											<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="30" data-value="0">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+											<p class="mui-ellipsis" id="data-price">人民币：20</p>
+											<p class="mui-ellipsis" id="data-price">港币：30</p>	
+										</div>
+									</a>
+								</li>
+							
+								<li class="mui-table-view-cell mui-media" data-detail="productDetail">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="fonts/img/head.jpg">
+										<div class="mui-media-body">
+											<span>油条</span>
+											<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="20" data-value="0">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+																						<p class="mui-ellipsis" id="data-price">人民币：20</p>
+											<p class="mui-ellipsis" id="data-price">港币：30</p>	
+										</div>
+									</a>
+								</li>
+							</ul>
+
+						</div>
+
+						<div class="wanc" id="wanc">
+							<ul class="mui-table-view" id="goodsList">
+								<li class="mui-table-view-cell mui-media">
+									
+								<div class="mui-input-row mui-radio mui-left">
+								    <label>人民币</label>
+								    <input name="radio3" type="radio" checked>
+								</div>
+								<div class="mui-input-row mui-radio mui-left">
+								    <label>港币</label>
+								    <input name="radio3" type="radio">
+								</div>
+								</li>
+								<li class="mui-table-view-cell mui-media" data-detail="productDetail">
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" src="fonts/img/head.jpg">
+										<div class="mui-media-body">
+											<span>油条</span>
+											<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="20" data-value="0">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+											<p class="mui-ellipsis" id="data-price">人民币：20</p>
+											<p class="mui-ellipsis" id="data-price">港币：30</p>	
+										</div>
+									</a>
+								</li>
+							</ul>
+
+						</div>
+						
+
+					</div>
+				
+					 
+				
+               
+				</div>
+				<nav class="mui-bar mui-bar-tab">
+					<a class="mui-tab-item mui-active">
+						<span>￥</span><span id="totalPrice">0.00</span>
+					</a>
+					<a class="mui-tab-item" id="settlement">
+						下一步
+					</a>
+				     </nav>
+			</div>
+			<div id="item2" class="mui-control-content">
+				
+				<ul class="mui-table-view mui-table-view-chevron">
+					
+					<li class="mui-table-view-cell mui-collapse">										
+						<a class="mui-navigate-right" href="#"><h4>订单编号:</h4><p>1308280012</p><p>2016-07-01 15:00</p></a>
+						
+						<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell"><a class="" href="#"><p class="mui-pull-left">面包</p><span>￥</span><span>0.00</span> <p class="mui-pull-right">x1</p></a>
+							</li>
+							<li class="mui-table-view-cell"><a class="" href="#"><p class="mui-pull-left">粥</p><span>￥</span><span>0.00</span><p class="mui-pull-right">x1</p></a>
+							</li>
+							<li class="mui-table-view-cell">
+								<div class="mui-media-body">
+								<span>总金额￥</span><span>0.00</span>	
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined mui-pull-right " >删除订单</button>									
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined mui-pull-right" >查看详情</button>
+								</div>	
+								
+							</li>
+						</ul>
+					</li>
+					<li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#"><h4>订单编号:</h4><p>1308280012</p><p>2016-07-01 15:00</p></a>
+						<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell">
+								
+								<a class="" href="#"><p class="mui-pull-left">包子</p> <p class="mui-pull-right">x1</p></a>
+							</li>
+							<li class="mui-table-view-cell"><a class="" href="#"><p class="mui-pull-left">包子</p> <p class="mui-pull-right">x1</p></a>
+							</li>
+							<li class="mui-table-view-cell">
+								<div class="mui-media-body">
+								<span>总金额￥</span><span>0.00</span>	
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined mui-pull-right " >删除订单</button>									
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined mui-pull-right" >查看详情</button>
+								</div>	
+							</li>
+						</ul>
+					</li>
+					<li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#"><h4>订单编号:</h4><p>1308280012</p><p>2016-07-01 15:00</p></a>
+						<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell"><a class="" href="#"><p class="mui-pull-left">包子</p> <p class="mui-pull-right">x1</p></a>
+							</li>
+							<li class="mui-table-view-cell">
+								<div class="mui-media-body">
+								<span>总金额￥</span><span>0.00</span>	
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined mui-pull-right " >删除订单</button>									
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined mui-pull-right" >查看详情</button>
+								</div>	
+							</li>
+						</ul>
+					</li>
+				</ul>
+			
+				<!--<ul class="mui-table-view" id="orderList">
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<div class="mui-media-body">
+								<span>订单02</span>
+								<span>￥</span><span id="totalPrice">0.00</span>
+								<h5>购物车：</h5>
+								<p>面包X1</p>
+								<p class="mui-ellipsis">2016-07-01</p>
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined">取消订单</button>
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认订单</button>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<div class="mui-media-body">
+								<span>订单02</span>
+								<span>￥</span><span id="totalPrice">0.00</span>
+								<h5>购物车：</h5>
+								<p>面包X1</p>
+								<p class="mui-ellipsis">2016-07-01</p>
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined">取消订单</button>
+								<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认订单</button>
+							</div>
+						</a>
+					</li>
+				</ul>-->
+			</div>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+
+			function checkGoods() { //计算总价
+				//				var productList = document.getElementById("goodsList");
+
+				//				mui(".mui-numbox").numbox();
+				var totalPrice = document.getElementById("totalPrice");
+				var numbers = document.getElementsByClassName("mui-input-numbox");
+				for(var i = 0, len = numbers.length; i < len; i++) {
+					numbers[i].addEventListener("change", function() {
+						var currentPrice = this.getAttribute("data-price");
+						// 记得将string类型转换为number类型，再做比较
+						var currentNum = parseInt(this.value);
+						var tmpNum = parseInt(this.getAttribute("data-value"));
+						// 计算出结果后，最后的结果用toFixed()方法，保留小数点后2位数
+						if(currentNum > tmpNum) {
+							totalPrice.innerHTML = (parseFloat(totalPrice.innerHTML) + parseFloat(currentPrice)).toFixed(2);
+						} else {
+							totalPrice.innerHTML = (parseFloat(totalPrice.innerHTML) - parseFloat(currentPrice)).toFixed(2);
+						}
+						// 每次计算完总价后，替换中间量的值，以便下次进行比较
+						this.setAttribute("data-value", currentNum);
+					});
+					var totalPrice1 = document.getElementById("totalPrice").innerHTML;
+					// 判定用户是否选择了商品
+					
+				}
+				
+			}
+			checkGoods();
+
+			 
+			 function settlementPrice(totalPrice) { //结算
+				var numbers = document.getElementsByClassName("mui-input-numbox");
+				var list = document.getElementsByClassName("mui-media");
+				var productArray = [];
+				for (var i = 0, len = numbers.length; i < len; i++) {
+					// 将所有个数不为0的商品信息，添加到数组中
+					if (numbers[i].value != "0") {
+						var productDetail = list[i].getAttribute("data-detail");
+						var productObj = JSON.parse(productDetail);
+						// 将商品的数量添加到商品对象中
+						productObj["productNum"] = numbers[i].value;
+						productArray.push(productObj);
+					}
+				}
+				mui.openWindow({
+					url: "../order/userOrder.html",
+					id: "userOrder",
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						productList: productArray,
+						totalPrice: totalPrice
+					}//将商品列表信息和总价格，一起传递到下一个窗口
+				});
+			};
+			 mui.plusReady(function() {
+				document.getElementById("settlement").addEventListener("tap", function() {
+						mui.openWindow({
+							url: "play.html",
+							id: "play",
+							waiting: {
+								autoShow: false
+							}
+    					})
+				});
+			});	
+				
+		</script>
+		
+
+	</body>
+
+</html>

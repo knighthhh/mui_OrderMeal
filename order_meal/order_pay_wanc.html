@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.picker.min.js"></script><!--选时间的JS-->
+    	<link href="css/mui.min.css" rel="stylesheet"/>
+    	<link href="css/my.css" rel="stylesheet"/> 
+    	<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" /><!--选时间的CSS-->
+		<title></title>
+		
+		<script type="text/javascript" charset="utf-8">
+   		mui.init();
+		</script>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title" style="color: #007AFF;">日常订餐</h1>
+		</header>
+		
+		<div class="mui-content" style="height: 100px;background-color: white;">
+			<div id="" style="text-align: center;margin-top: 18px;color: burlywood;font-size: 20px;">
+				预定<span id="show_meal_type">晚餐</span>订单
+			</div>
+		</div>
+		
+		<div >
+			<ul class="mui-table-view mui-table-view-chevron" style="background-color: white;font-weight: bold;">
+				<li class="mui-table-view-cell" style="padding-right: 10px;">
+					<span >订单名称</span>
+					<span style="color: gray;font-weight: normal;float: right;">旭日饭堂晚餐订单</span>
+				</li>
+				<li class="mui-table-view-cell mui-collapse" >
+					<a class="mui-navigate-right" style="padding-right: 35px;">
+						<span>订单详情</span>
+						<span id="titledate" style="font-weight: normal;float: right;color: gray;">2016-08-26</span>
+					</a>
+					<ul class="mui-table-view mui-table-view-chevron" style="background-color: white;font-weight: normal;color: gray;">
+						<li class="mui-table-view-cell">
+							订餐日期：从
+							<span id="startdate">08-26</span> 到
+							<span id="enddate">09-15</span> 
+						</li>
+						<li class="mui-table-view-cell">
+							确认订餐天数共计 
+							<span id="sure_order_day">15</span> 天
+						</li>
+						<li class="mui-table-view-cell">
+							每份晚餐
+							<span id="price">8</span>
+							元（豆浆、粥、油条）
+						</li>
+					</ul>
+				</li>
+				<li class="mui-table-view-cell" style="padding-right: 10px;">
+					<span>
+						支付金额
+					</span>
+					<span style="float: right;color: orange;" >
+						¥ <span id="allmoney">75</span>.00
+					</span>
+				</li>
+			</ul>
+			<div>
+				&nbsp;
+			</div>
+			<ul class="mui-table-view mui-table-view-chevron" style="background-color: white;font-weight: bold;">
+				<li class="mui-table-view-cell">
+					支付方式
+				</li>
+				<li class="mui-table-view-cell mui-radio mui-right mui-media">
+					<img  class="mui-media-object mui-pull-left" src="img/weixin.jpg">
+					<div style="padding-top: 10px;">
+						微信支付
+						<input style="padding-top: 10px;" name="radio" type="radio" checked>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-radio mui-right mui-media" >
+					<img  class="mui-media-object mui-pull-left" src="img/zhifubao.jpg">
+					<div style="padding-top: 10px;">
+						支付宝支付
+						<input style="padding-top: 10px;" name="radio" type="radio" >
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<!--底部按钮-->
+		<div class="mui-bar mui-bar-tab">
+			<div id="list_bottom" style="height:100%;width:50%;margin-left:25%;float: left;">
+				<button id="sure_pay" type="button" class="mui-btn mui-btn-green" >
+					确认付款
+				</button>
+				<button id="cancel_pay" type="button" class="mui-btn mui-btn-red">
+					取消
+				</button>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			//对传过来的URL进行处理
+			var thisURL = decodeURI(location.href);    
+			var getval_all =thisURL.split('?')[1]; 
+			var temp_arr=new Array;
+		 	var getval_detail_arr= getval_all.split("&");
+		 	for(i=0;i<getval_detail_arr.length;i++){
+		 		temp_arr[i]=getval_detail_arr[i].split("=")[1];
+		 	}
+		 	temp_arr[1]=temp_arr[1].substr(5,5);
+		 	temp_arr[2]=temp_arr[2].substr(5,5);
+			
+			var mydate=new Date();
+			var year=mydate.getFullYear();
+			var month=mydate.getMonth()+1;
+			var day=mydate.getDate();
+			var hour=mydate.getHours();      
+			var minute=mydate.getMinutes();
+			
+			var price=document.getElementById("price").innerHTML;
+
+			
+			document.getElementById("startdate").innerHTML=temp_arr[1];
+			document.getElementById("enddate").innerHTML=temp_arr[2];
+			document.getElementById("titledate").innerHTML=year+'-'+month+'-'+day+'&nbsp&nbsp'+hour+':'+minute;
+			document.getElementById("sure_order_day").innerHTML=temp_arr[3];
+			document.getElementById("allmoney").innerHTML=temp_arr[3]*price;
+		
+			//确认支付（调用微信支付接口）
+//			document.getElementById("sure_pay").addEventListener('tap', function() {
+//				mui.openWindow({
+//	   				url: 'index.html', 
+//	    			id:'index'
+//	    		});
+//					
+//			});
+			//取消支付
+			document.getElementById("cancel_pay").addEventListener('tap', function() {
+				var btnArray = ['确认','返回'];
+				mui.confirm("确认取消订单吗？","旭日饭堂",btnArray,function(e){
+					if (e.index == 0) {
+						
+					}else{
+						
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

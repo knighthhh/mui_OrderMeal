@@ -1,0 +1,35 @@
+"
+<li class='mui-table-view-cell mui-media' data-detail='" + productDetail + "'>" + '
+	<a href="javascript:;">
+		<img class="mui-media-object mui-pull-left" src="' + result[i].productImage + '">' + '
+		<div class="mui-media-body">
+			<span>' + result[i].productName + '</span>' + '
+			<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">' + '
+				<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>' + /* 这里有一个data-value这个属性，作为一个中间量来判定商品的增减，初始化为0 * data-price自定义属性，用来隐式得存储商品价格 */ '
+				<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="' + result[i].productPrice + '" data-value="0">' + '
+				<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>' + '
+			</div>
+			<p class="mui-ellipsis">' + result[i].productPrice + '</p>
+		</div>
+	</a>
+</li>';
+
+
+
+
+
+				<li class="mui-table-view-cell mui-media"  data-detail="productDetail">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="">
+						<div class="mui-media-body">
+							<span>商品名</span>
+							<div class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="10">
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" value="0" readonly="readonly" type="number" data-price="60" data-value="0">
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+							<p class="mui-ellipsis" id="price">30</p>
+						</div>
+					</a>
+				</li>
+			 

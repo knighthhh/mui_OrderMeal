@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.picker.min.js"></script><!--选时间的JS-->
+    	<link href="css/mui.min.css" rel="stylesheet"/>
+    	<link href="css/my.css" rel="stylesheet"/> <!--自己写的样式CSS-->
+    	<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" /><!--选时间的CSS-->
+		<title></title>
+		
+		<script type="text/javascript" charset="utf-8">
+   		mui.init();
+		</script>
+
+	</head>
+	
+	<body>
+		<!--标题-->
+		<header class="mui-bar mui-bar-nav">
+		    <h1 class="mui-title" style="color: #007AFF;">日常订餐</h1>
+		</header>
+		
+		<!--图片轮播-->
+		<div class="mui-content">
+			<div id="slider" class="mui-slider" >
+			  <div class="mui-slider-group mui-slider-loop" >
+			    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+			    <div class="mui-slider-item mui-slider-item-duplicate">
+			      <a href="#">
+			        <img src="img/3.jpg">
+			      </a>
+			    </div>
+			    <!-- 第一张 -->
+			    <div class="mui-slider-item">
+			      <a href="#">
+			        <img src="img/1.jpg">
+			      </a>
+			    </div>
+			    <!-- 第二张 -->
+			    <div class="mui-slider-item">
+			      <a href="#">
+			        <img src="img/2.jpg">
+			      </a>
+			    </div>
+			    <!-- 第三张 -->
+			    <div class="mui-slider-item">
+			      <a href="#">
+			        <img src="img/3.jpg">
+			      </a>
+			    </div>
+			  
+			    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+			    <div class="mui-slider-item mui-slider-item-duplicate">
+			      <a href="#">
+			        <img src="img/1.jpg">
+			      </a>
+			    </div>
+			  </div>
+			  <div class="mui-slider-indicator">
+			    <div class="mui-indicator mui-active"></div>
+			    <div class="mui-indicator"></div>
+			    <div class="mui-indicator"></div>
+			  </div>
+			</div>
+		</div>
+		
+		<!--轮播图下面的两个按钮-->
+		<div class="mui-segmented-control">
+		    <a class="mui-control-item mui-active" href="#item1"  style="line-height: 50px;">订餐</a>
+		    <a  class="mui-control-item" href="#item2"  style="line-height: 50px;">订餐详情</a>
+		</div>
+		
+		<!--item1主体部分 -->
+		<div id="item1" class="mui-control-content mui-active">
+			<!--预定早 中 晚餐-->
+			<div class="order_meal">
+				<!--左边4个切换按钮-->
+				<div class="order_meal_type  mui-col-xs-3">
+					<ul>
+						<div id="segmentedControl" class="mui-segmented-control">
+							<li class="mui-control-item mui-active" id="li_zc" style="display: table;width: 100%;">早餐</li>
+							<li class="mui-control-item"  id="li_wuc" style="display: table;width: 100%;" >午餐</li>
+							<li class="mui-control-item"  id="li_wanc" style="display: table;width: 100%;" >晚餐</li>
+							<li class="mui-control-item"  id="li_hunzhai" style="display: table;width: 100%;" >荤斋转换</li>
+						</div>
+					</ul>
+				</div>
+		
+				<!--右边明细-->
+				<div class="order_meal_list mui-col-xs-9">
+					<!--早餐部分 -->
+					<div class="zc"  id="zc" >
+						<!--解释明细-->
+						<div id="explain">
+							<div>ON状态表示你预定了所选时间的星期几</div>
+							<div style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#007aff;overflow:hidden;"></div>
+							<span id="floor" >一楼</span>
+							<div style="width:1px;height:50%;margin:0px auto;padding:0px;background-color:#007aff;overflow:hidden;float:left;"></div>
+							<span>早餐</span>
+						</div>
+						
+						<!--两个选时间的按钮-->
+						<div id="search">
+							<button id="result_zc1" data-options='{"type":"date"}' class="btn mui-btn mui-btn-negative  mui-icon mui-icon-search" >初始日期</button>	
+							<button id="result_zc2" data-options='{"type":"date"}' class="btn mui-btn mui-btn-negative  mui-icon mui-icon-search">截止日期</button>
+						</div>
+					
+						<!--星期列表-->
+						<div class="mui-content" >
+							<div class="mui-card" id="zc_mui-card" >
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										星期一
+										<div id="zc_monday" class="mui-switch mui-active" >
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期二
+										<div id="zc_tuesday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期三
+										<div id="zc_wednesday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期四
+										<div id="zc_thursday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期五
+										<div id="zc_friday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期六
+										<div id="zc_saturday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期日
+										<div id="zc_sunday" class="mui-switch mui-disabled" >
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+						<!--下一步按钮-->
+						<div id="zc_next" class="mui-pull-right" style="margin: 10px;">
+							<button type="button" class="mui-btn mui-btn-blue  mui-btn-outlined" style="width: 120px;">
+		            				下一步
+		           		 		<span class="mui-icon mui-icon-forward"></span>
+		      			 	 </button>
+						</div>
+					</div>
+			
+					<!--午餐部分 -->
+					<div class="wuc"  id="wuc" >
+						<div id="explain">
+							<div>ON状态表示你预定了所选时间的星期几</div>
+							<div style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#007aff;overflow:hidden;"></div>
+							<span id="floor" >一楼</span>
+							<div style="width:1px;height:50%;margin:0px auto;padding:0px;background-color:#007aff;overflow:hidden;float:left;"></div>
+							<span>午餐</span>
+						</div>
+						
+						<div id="search">
+							<button id="result_wuc1" data-options='{"type":"date"}' class="btn mui-btn mui-btn-negative  mui-icon mui-icon-search" >初始日期</button>	
+							<button id="result_wuc2" data-options='{"type":"date"}' class="btn mui-btn mui-btn-negative  mui-icon mui-icon-search">截止日期</button>
+						</div>
+					
+						<div class="mui-content" >
+							<div class="mui-card" id="wuc_mui-card" >
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										星期一
+										<div id="wuc_monday" class="mui-switch mui-active" >
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期二
+										<div id="wuc_tuesday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期三
+										<div id="wuc_wednesday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期四
+										<div id="wuc_thursday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期五
+										<div id="wuc_friday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期六
+										<div id="wuc_saturday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期日
+										<div id="wuc_sunday" class="mui-switch mui-disabled">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+						<div id="wuc_next" class="mui-pull-right" style="margin: 10px;">
+							<button type="button" class="mui-btn mui-btn-blue  mui-btn-outlined" style="width: 120px;">
+		            				下一步
+		           		 		<span class="mui-icon mui-icon-forward"></span>
+		      			 	 </button>
+						</div>
+					</div>
+					
+					<!--晚餐部分 -->
+					<div class="wanc"  id="wanc" >
+						<div id="explain">
+							<div>ON状态表示你预定了所选时间的星期几</div>
+							<div style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#007aff;overflow:hidden;"></div>
+							<span id="floor" >一楼</span>
+							<div style="width:1px;height:50%;margin:0px auto;padding:0px;background-color:#007aff;overflow:hidden;float:left;"></div>
+							<span>晚餐</span>
+						</div>
+						
+						<div id="search">
+							<button id="result_wanc1" data-options='{"type":"date"}' class="btn mui-btn mui-btn-negative  mui-icon mui-icon-search" >初始日期</button>	
+							<button id="result_wanc2" data-options='{"type":"date"}' class="btn mui-btn mui-btn-negative  mui-icon mui-icon-search">截止日期</button>
+						</div>
+					
+						<div class="mui-content" >
+							<div class="mui-card" id="wanc_mui-card" >
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										星期一
+										<div id="wanc_monday" class="mui-switch mui-active" >
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期二
+										<div id="wanc_tuesday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期三
+										<div id="wanc_wednesday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期四
+										<div id="wanc_thursday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期五
+										<div id="wanc_friday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期六
+										<div id="wanc_saturday" class="mui-switch mui-active">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
+										星期日
+										<div id="wanc_sunday" class="mui-switch mui-disabled">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+						<div id="wanc_next" class="mui-pull-right" style="margin: 10px;">
+							<button type="button" class="mui-btn mui-btn-blue  mui-btn-outlined" style="width: 120px;">
+		            				下一步
+		           		 		<span class="mui-icon mui-icon-forward"></span>
+		      			 	 </button>
+						</div>
+					</div>
+					
+					<!--荤斋转换部分-->
+					<div class="hunzhai" id="hunzhai">
+						<table  id="table_hunzhai" border="1px" bordercolor="#007aff">
+							<tr><td>您當前的就餐類型：齋</td></tr>
+							<tr><td>當前類型生效日期： 2016-07-14</td></tr>
+							<tr><td>距下一次齋葷轉換許可還有： 9天</td></tr>
+						</table>
+						
+						<div style="margin-top: 15px;padding-left:30%;">
+							<button id="tran_hunzhai" class="mui-btn-negative ">荤斋类型转换</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!--item2主体部分 -->
+		<div id="item2" class="mui-control-content">
+			<div style="height: 125px;">
+				<div class="list_title" >
+					<h3>個人訂/就餐情況查詢</h3>
+				</div>
+			
+				<!--四个选择按钮部分-->
+				<div style="height: 65px;margin-top: 8px;">
+					<!--早中晚餐类型-->
+					<div class="select_type">
+						<div style="height: 45%;color: #f0ad4e;padding: 3px;">
+							类型
+						</div>
+						<div style="height: 55%;width: 100%;background-color: #f0ad4e;">
+							<select class="select_type_detail">
+								<option value="zc_select">早餐</option>
+								<option value="wuc_select">午餐</option>
+								<option value="wanc_select">晚餐</option>
+							</select>
+						</div>
+					</div>
+					
+					<!--预就餐时间选择-->
+					<div class="eat_time">
+						<div style="height: 45%;color: #dd524d;padding: 3px;">
+							就餐时间
+						</div>
+						<div class="eat_time_select">
+							<div id="result_list_date1" data-options='{"type":"date"}'  class="btn" >
+								初始日期
+							</div>
+							<!--竖线-->
+							<div style="width:1%;height:100%;margin:0px auto;padding:0px;background-color:white;overflow:hidden;float:left;">
+							</div>
+							<div id="result_list_date2" data-options='{"type":"date"}'  class="btn" >
+								截止日期
+							</div>
+						</div>
+					</div>
+				
+					<!--查询按钮-->
+					<div class="list_search">
+						<div style="height: 45%;color: #007AFF;padding: 3px;">
+							订单
+						</div>
+						<div id="order_query" class="list_search_button">
+							查询
+						</div>
+					</div>
+				</div>			
+			</div>
+			
+			<!--订餐详情部分 -->
+			<div class="mui-content" >
+				<div class="mui-card">
+					<ul class="mui-table-view mui-table-view-chevron" style="background-color: white;">
+						<!--未就餐样式-->
+						<li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" style="color: blue;">订餐日期：2016-08-16 &nbsp; 14:25</a>
+							<ul class="mui-table-view mui-table-view-chevron" style="color: blue;background-color: white;">
+								<li class="mui-table-view-cell">
+									<span style="width: 25%;float: left;">星期一  </span>
+									<span style="width: 25%;float: left;">中餐  </span> 
+									<span style="width: 25%;float: left;">一楼  </span> 
+									<span style="width: 25%;float: right;">荤菜 </span> 
+								</li>
+								<li class="mui-table-view-cell">
+									就餐打卡时间:  N/A
+								</li>
+								<li class="mui-table-view-cell">
+									备注:有定无就
+								</li>
+								<li class="mui-table-view-cell" >&nbsp;<button id="quxiao_order" class="mui-btn mui-btn-danger mui-btn-outlined mui-pull-right">取消该定餐</button></li>
+							</ul>
+						</li>
+						
+						<!--已就餐样式-->
+						<li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#" style="color: black;">订餐日期：2016-08-10 &nbsp; 14:45 &nbsp;已就餐</a>
+							<ul class="mui-table-view mui-table-view-chevron" style="color: black;background-color: white;">
+								<li class="mui-table-view-cell">
+									<span style="width: 25%;float: left;">星期二  </span>
+									<span style="width: 25%;float: left;">中餐  </span> 
+									<span style="width: 25%;float: left;">一楼  </span> 
+									<span style="width: 25%;float: right;">荤菜 </span> 
+								</li>
+								<li class="mui-table-view-cell">
+									就餐打卡时间:  12:45 下午
+								</li>
+								<li class="mui-table-view-cell">
+									备注:有定有就
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+			
+		
+			
+			<!--确定订餐(item1)和查询订餐详情(item2)的JS代码-->
+			<script type="text/javascript">
+				//早餐
+				var sure=['确定'];
+				//比较日期大小的函数
+				function dateCompare(startdate,enddate) {
+					var substr1=startdate.substring(1);
+					var substr2=enddate.substring(1);
+					
+					var arr1=substr1.split("-");    
+					var starttime=new Date(arr1[0],arr1[1],arr1[2]);    
+					var starttimes=starttime.getTime();   
+					
+					var arr2=substr2.split("-");    
+					var endtime=new Date(arr2[0],arr2[1],arr2[2]);    
+					var endtimes=endtime.getTime(); 
+					if(starttimes>endtimes){
+						return true;
+					}else{
+						return false;
+					}
+				}
+				//判断选择日期是否在该天以前的函数
+				function dateJudge(startdate,enddate){
+					function GetDateStr(AddDayCount){ 
+						var dd = new Date(); 
+						dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
+						var y = dd.getFullYear(); 
+						var m = dd.getMonth()+1;//获取当前月份的日期 
+						var d = dd.getDate(); 
+						return y+"-"+m+"-"+d; 
+					} 
+						
+					var datestr=GetDateStr(1); 
+					var substr1=startdate.substring(1);
+					var substr2=enddate.substring(1);
+					if(dateCompare(datestr,substr1)||dateCompare(datestr,substr2)){
+						return true;
+					}else{
+						return false;
+					}
+				}
+				
+				//用来传入下一个页面的‘1234560’代表星期几的函数
+				function weekJudge(num_type){
+					var weekvalue='';
+					var weekselect=new Array();
+					if(num_type==1){
+						weekselect[0]=document.getElementById("zc_monday");
+						weekselect[1]=document.getElementById("zc_tuesday");
+						weekselect[2]=document.getElementById("zc_wednesday");
+						weekselect[3]=document.getElementById("zc_thursday");
+						weekselect[4]=document.getElementById("zc_friday");
+						weekselect[5]=document.getElementById("zc_saturday");
+						weekselect[6]=document.getElementById("zc_sunday");
+					}else if(num_type==2){
+						weekselect[0]=document.getElementById("wuc_monday");
+						weekselect[1]=document.getElementById("wuc_tuesday");
+						weekselect[2]=document.getElementById("wuc_wednesday");
+						weekselect[3]=document.getElementById("wuc_thursday");
+						weekselect[4]=document.getElementById("wuc_friday");
+						weekselect[5]=document.getElementById("wuc_saturday");
+						weekselect[6]=document.getElementById("wuc_sunday");
+					}else if(num_type==3){
+						weekselect[0]=document.getElementById("wanc_monday");
+						weekselect[1]=document.getElementById("wanc_tuesday");
+						weekselect[2]=document.getElementById("wanc_wednesday");
+						weekselect[3]=document.getElementById("wanc_thursday");
+						weekselect[4]=document.getElementById("wanc_friday");
+						weekselect[5]=document.getElementById("wanc_saturday");
+						weekselect[6]=document.getElementById("wanc_sunday");
+					}
+					
+					for(var i=0;i<weekselect.length;i++){
+						if(weekselect[i].className=="mui-switch mui-active"){
+							if(i==6 && weekselect[i].className=="mui-switch mui-active"){
+								weekvalue=weekvalue+'0';
+							}
+							else{
+								weekvalue=weekvalue+(i+1).toString();
+							}
+						}
+					}
+					return weekvalue;
+				}
+				
+				//早餐'下一步'按钮单击事件
+				document.getElementById("zc_next").addEventListener('tap', function() {
+					if(dateJudge(result_zc1.innerText,result_zc2.innerText)){
+						mui.confirm("你选择的时间必须是明天("+datestr+")以后的日期","旭日饭堂",sure);
+					}else if(dateCompare(result_zc1.innerText,result_zc2.innerText)){
+						mui.confirm(result_zc1.innerText+result_zc2.innerText+"是不可能的","旭日饭堂",sure);
+					}
+					else{
+						var weekvalue=weekJudge(1);
+						mui.openWindow({
+		   					url: 'order_list.html?meal_type=早餐'+'&startdate='+result_zc1.innerText.substring(1)+'&enddate='+result_zc2.innerText.substring(1)+'&weekvaule='+weekvalue, 
+		    				id:'order_list',
+		    			});
+					}
+					
+				});
+				//午餐'下一步'按钮单击事件
+				document.getElementById("wuc_next").addEventListener('tap', function() {
+					if(dateJudge(result_wuc1.innerText,result_wuc2.innerText)){
+						mui.confirm("你选择的时间必须是明天("+datestr+")以后的日期","旭日饭堂",sure);
+					}else if(dateCompare(result_wuc1.innerText,result_wuc2.innerText)){
+						mui.confirm(result_wuc1.innerText+result_wuc2.innerText+"是不可能的","旭日饭堂",sure);
+					}
+					else{
+						var weekvalue=weekJudge(2);
+						mui.openWindow({
+		   					url: 'order_list.html?meal_type=午餐'+'&startdate='+result_wuc1.innerText.substring(1)+'&enddate='+result_wuc2.innerText.substring(1)+'&weekvaule='+weekvalue, 
+		    				id:'order_list',
+		    			});
+					}
+					
+				});
+				//晚餐'下一步'按钮单击事件
+				document.getElementById("wanc_next").addEventListener('tap', function() {
+					if(dateJudge(result_wanc1.innerText,result_wanc2.innerText)){
+						mui.confirm("你选择的时间必须是明天("+datestr+")以后的日期","旭日饭堂",sure);
+					}else if(dateCompare(result_wanc1.innerText,result_wanc2.innerText)){
+						mui.confirm(result_wanc1.innerText+result_wanc2.innerText+"是不可能的","旭日饭堂",sure);
+					}
+					else{
+						var weekvalue=weekJudge(3);
+						mui.openWindow({
+		   					url: 'order_list.html?meal_type=晚餐'+'&startdate='+result_wanc1.innerText.substring(1)+'&enddate='+result_wanc2.innerText.substring(1)+'&weekvaule='+weekvalue, 
+		    				id:'order_list',
+		    			});
+					}
+					
+				});
+				
+				
+				//item2里查询按钮的单击事件
+				document.getElementById("order_query").addEventListener('tap', function() {
+					if(dateCompare(result_list_date1.innerText,result_list_date2.innerText)){
+						mui.confirm(result_list_date1.innerText+result_list_date2.innerText+"是不可能的","旭日饭堂",sure);
+					}
+					else{
+						
+					}
+					
+				});
+				//item2里取消订餐的JS代码
+				document.getElementById("quxiao_order").addEventListener('tap', function() {
+					var btnArray = ['确认','返回'];
+					mui.confirm("是否取消 2016-08-17 星期一的订餐", '旭日饭堂', btnArray, function(e) {
+						if (e.index == 0) {
+							
+						} else {
+						}
+					})
+				});
+			</script>
+			
+		<!--这里的JS代码基本不用改-->
+		<script type="text/javascript">
+			//图片轮播的JS代码
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			var slider = mui("#slider");
+			slider.slider({
+				interval: 2000
+			});
+			
+			//隐藏早 中 晚餐对应详情的JS
+			document.getElementById("li_zc").addEventListener("tap", function(){
+			 	zc.style.display='block';
+			 	wuc.style.display='none';
+				wanc.style.display='none';
+				hunzhai.style.display='none';
+			});
+			document.getElementById("li_wuc").addEventListener("tap", function(){
+			 	zc.style.display='none';
+				wuc.style.display='block';
+				wanc.style.display='none';
+				hunzhai.style.display='none';
+			});
+			document.getElementById("li_wanc").addEventListener("tap", function(){
+			 	zc.style.display='none';
+				wuc.style.display='none';
+				wanc.style.display='block';
+				hunzhai.style.display='none';
+			});
+			document.getElementById("li_hunzhai").addEventListener("tap", function(){
+			 	zc.style.display='none';
+				wuc.style.display='none';
+				wanc.style.display='none';
+				hunzhai.style.display='block';
+			});
+		
+			//荤斋转换的JS代码
+			document.getElementById("tran_hunzhai").addEventListener('tap', function() {
+				var btnArray = ['确认','取消'];
+				var btnArray2 =['确认'];
+				mui.confirm("您正在请求餐类型荤斋转换，是否确认", '旭日饭堂', btnArray, function(e) {
+					if (e.index == 0) {
+						mui.confirm("转换成功","旭日饭堂",btnArray2,function(e){
+							zc.style.display='block';
+							hunzhai.style.display='none';
+							document.getElementById("li_zc").className ="mui-control-item mui-active";
+							document.getElementById("li_hunzhai").className ="mui-control-item";
+						});
+					} 
+					else {
+					}
+				})
+			});
+			
+			//初始化查询日期
+			function GetDateStr(AddDayCount) { 
+				var dd = new Date(); 
+				dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
+				var y = dd.getFullYear(); 
+				var m = dd.getMonth()+1;//获取当前月份的日期 
+				var d = dd.getDate(); 
+				if(m<10){
+					m='0' + m;
+				}
+				
+				return y+"-"+m+"-"+d; 
+			} 
+			var datestr=GetDateStr(1); 
+			result_zc1.innerText = '从' + datestr;	
+			result_zc2.innerText = '到' + datestr;	
+			result_wuc1.innerText = '从' + datestr;	
+			result_wuc2.innerText = '到' + datestr;	
+			result_wanc1.innerText = '从' + datestr;	
+			result_wanc2.innerText = '到' + datestr;	
+			result_list_date1.innerText='从' + datestr;	
+			result_list_date2.innerText='到' + datestr;	
+			
+			//6个选初始日期和截止日期的按钮的JS代码
+			(function($) {
+				$.init();
+				var btns = $('.btn');
+				btns.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var picker = new $.DtPicker(options);
+						picker.show(function(rs) {
+							if(i==0){
+								result_zc1.innerText = '从' + rs.text;	
+							}
+							if(i==1){
+								result_zc2.innerText = '到' + rs.text;	
+							}
+							if(i==2){
+								result_wuc1.innerText = '从' + rs.text;	
+							}
+							if(i==3){
+								result_wuc2.innerText = '到' + rs.text;	
+							}
+							if(i==4){
+								result_wanc1.innerText = '从' + rs.text;	
+							}
+							if(i==5){
+								result_wanc2.innerText = '到' + rs.text;	
+							}
+							if(i==6){
+								result_list_date1.innerText = '从' + rs.text;	
+							}
+							if(i==7){
+								result_list_date2.innerText = '到' + rs.text;	
+							}
+							
+							picker.dispose();
+						});				
+					}, false);
+				});
+			})(mui);
+		</script>
+			
+	</body>
+</html>

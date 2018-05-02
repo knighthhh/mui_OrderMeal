@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/xr.css" />
+		
+		<script type="text/javascript" charset="utf-8">
+		</script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.js"></script>
+		
+
+		<script type="text/javascript">
+			mui.init({
+    subpages:[{
+      url:'list.html',
+      id:'list.html',
+      styles:{
+        top:'45px',//mui标题栏默认高度为45px；
+        bottom:'0px'//默认为0px，可不定义；
+      }
+    }]
+  });
+
+		</script>
+		<style type="text/css">
+			
+			
+			
+			
+			
+			#topPopover {
+				position: fixed;
+				top: 10px;
+				right: 6px;
+			}
+			
+			
+			
+			.mui-popover {
+				height: 250px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">标题</h1>
+			<a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>
+		</div>
+		</header>
+
+		<div class="mui-content">
+         <div id="topPopover" class="mui-popover">
+			
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view-divider">
+						<li class="mui-table-view-cell">
+							<a href="#">
+							<img class="mui-media-object mui-pull-right" id="uimg" src="。。。。img">
+						<div class="mui-media-body">
+							<span id="uname">张三</span>
+							<p class="mui-ellipsis" id="uid">1234</p>
+						</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">
+							性别<span class="mui-pull-right" id="usex">男</span>
+						</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">
+							工号<span class="mui-pull-right" id="umajor">1234</span>
+						</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">
+							手机号<span class="mui-pull-right" id="upn">15768651577</span>
+						</a>
+						</li>
+						
+						<li class="mui-table-view-cell"><a href="#">
+							员购余额<span class="mui-pull-right" id="up">30</span>
+						</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		
+
+		</div>
+		<script type="text/javascript">
+			
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui('.mui-scroll-wrapper').scroll();
+			mui('body').on('shown', '.mui-popover', function(e) {
+				//console.log('shown', e.detail.id);//detail为当前popover元素
+			});
+			mui('body').on('hidden', '.mui-popover', function(e) {
+				//console.log('hidden', e.detail.id);//detail为当前popover元素
+			});
+		
+		</script>
+	</body>
+
+</html>

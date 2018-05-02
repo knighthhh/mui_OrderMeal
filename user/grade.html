@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/set.css"/>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady()
+		</script>
+		<style type="text/css">
+			#grade{
+				width: 100%;
+				font-size: 0.7em;
+				
+			}
+			td{
+				text-align: center;
+			}
+	
+
+.radio-td-btn ul,li{
+	list-style-type:none;
+	display: inline;
+	text-align: left;
+	margin:0px;
+	padding:0px;
+	
+}
+
+
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">菜式评分</h1>
+		</header>
+		<div class="mui-content">
+		    
+		    
+	<table border="" cellspacing="" cellpadding="" id="grade">
+		<tr>
+			<th>日期</th>
+			<th>星期</th>
+			<th>楼层</th>
+			<th>菜样</th>
+			<th>菜式</th>
+			<th>评分</th>
+		</tr>
+		<tr>
+			<td>2016-7-1</td>
+			<td>星期五</td>
+			<td>一楼</td>
+			<td>时菜</td>
+			<td>炒时菜</td>
+			<td class="radio-td">
+				<div class="radio-td-btn">
+				    <ul class="radio-btn">
+            <li class="radio-btn-li"><input type="radio" name="radio-btn" />很好</li>
+        
+            <li><input type="radio" name="radio-btn" />好</li>
+       
+            <li><input type="radio" name="radio-btn" />一般</li>
+            <li><input type="radio" name="radio-btn" />差</li>
+    				</ul>
+				</div>
+				
+			</td>
+			<tr>
+				<td>点评意见</td>
+				<td colspan="5">
+				
+					<div align="center"> <textarea name="textfield3" cols="" rows=""></textarea>
+	    				
+	        		</div>
+	        	</td>
+			</tr>
+		</tr>
+		
+	</table>
+	<div id="" align="center">
+			<button type="button" class="mui-btn mui-btn-blue " id="submit">提交</button>
+
+	</div>
+	
+	
+		 
+		    
+		</div>
+		
+	</body>
+
+</html>

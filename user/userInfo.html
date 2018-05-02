@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/set.css"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+//    	window.onload = function(){
+////    		document.getElementById("exit").addEventListener("tap", function() {
+////					// http://www.html5plus.org/doc/zh_cn/nativeui.html#plus.nativeUI.confirm
+////					plus.nativeUI.confirm("确定退出登录？", function(e) {
+////						if (e.index == 0) {
+////							// http://www.html5plus.org/doc/zh_cn/storage.html#plus.storage.removeItem
+////							plus.storage.removeItem("userInfo");
+////							mui.openWindow({
+////								url: "login.html",
+////								id: "login",
+////								waiting: {
+////									autoShow: false
+////								},
+////								extras: {
+////									entrance: "userInfo"
+////								}
+////							});
+////						}
+////					}, "", ["退出", "算了"]);
+//    document.getElementById("exit").addEventListener("tap", function() {
+////						alert("asdf");
+////						window.open = "userInfo.html";
+////						window.href = "userInfo.html";
+//						mui.openWindow({
+//							url: "login.html",
+//							id: "login",
+//							waiting: {
+//								autoShow: false
+//							}
+//  					})
+//					});
+//				}
+//			
+//			document.getElementById("edit").addEventListener("tap", function() {
+//								mui.openWindow({
+//									url: "editUserInfo.html",
+//									id: "editUserInfo",
+//									waiting: {
+//										autoShow: false
+//									},
+//									extras: {
+//										
+//									} //其实这个主要是为了演示，子页面如何获取对父页面传的值
+//								});
+//							});
+//							document.getElementById("editpassword").addEventListener("tap", function() {
+//								mui.openWindow({
+//									url: "edit.html",
+//									id: "edit",
+//									waiting: {
+//										autoShow: false
+//									},
+//									extras: {
+//										
+//									} //其实这个主要是为了演示，子页面如何获取对父页面传的值
+//								});
+//							});
+//    	});
+			
+			window.onload = function(){
+		
+		document.getElementById("exit").addEventListener("tap", function() {
+//						alert("asdf");
+//						window.open = "userInfo.html";
+//						window.href = "userInfo.html";
+						mui.openWindow({
+							url: "login.html",
+							id: "login",
+							waiting: {
+								autoShow: false
+							}
+    					})
+					});
+					document.getElementById("editpassword").addEventListener("tap", function() {
+						mui.openWindow({
+							url: "edit.html",
+							id: "edit",
+							waiting: {
+								autoShow: false
+							}
+    					})
+					});
+				document.getElementById("edit").addEventListener("tap", function() {
+						mui.openWindow({
+							url: "subEdit.html",
+							id: "subEdit",
+							waiting: {
+								autoShow: false
+							}
+    					})
+					});
+				document.getElementById("us").addEventListener("tap", function() {
+						mui.openWindow({
+							url: "aboutus.html",
+							id: "aboutus",
+							waiting: {
+								autoShow: false
+							}
+    					})
+					});
+			
+			
+		}
+    </script>
+    <style type="text/css">
+			#edit {
+				color: red;
+				margin-top: 10px;
+			}
+			
+			.mui-button-row {
+				padding: 10px;
+			}
+			
+			.mui-btn-block {
+				padding: 10px;
+			}
+		</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <a class="mui-pull-right" id="edit">修改</a>
+	    <h1 class="mui-title">我的资料</h1>
+	</header>
+	<div class="mui-content">
+	    <ul class="mui-table-view" id="info">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-right" id="uimg" src="。。。。img">
+						<div class="mui-media-body">
+							<span id="uname">张三</span>
+							<p class="mui-ellipsis" id="uid">1234</p>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					性别<span class="mui-pull-right" id="usex">男</span>
+				</li>
+				
+				<li class="mui-table-view-cell">
+					工号<span class="mui-pull-right" id="umajor">1234</span>
+				</li>
+				<li class="mui-table-view-cell">
+					手机号<span class="mui-pull-right" id="upn">15768651577</span>
+				</li>
+				
+				        <li class="mui-table-view-cell">
+				            <a class="mui-navigate-right" id="editpassword">
+				                修改密码
+				            </a>
+				        </li>
+				        
+			</ul>
+			<div class="mui-button-row">
+				<button class="mui-btn mui-btn-red mui-btn-block" id="exit" type="button">退出登录</button>
+			</div>
+			
+	</div>
+</body>
+</html>
